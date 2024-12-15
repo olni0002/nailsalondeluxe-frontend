@@ -1,0 +1,215 @@
+/* General Styles */
+body {
+    font-family: 'Georgia', sans-serif;
+    background: linear-gradient(to bottom right, #ffe4e1, #f8d7e7); /* Gradient background */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column; /* Allow content and footer to stack vertically */
+    min-height: 100vh; /* Ensure body covers full viewport height */
+    animation: fadeInBody 1s ease-in-out; /* Fade-in animation for the page */
+}
+
+/* Center content and avoid footer overlap */
+.content-container {
+    flex: 1; /* Take up remaining space */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 100px; /* Prevent overlap with the footer */
+    box-sizing: border-box;
+    animation: slideInFromTop 1s ease-in-out; /* Slide-in animation for the login container */
+}
+
+.login-wrapper {
+    max-width: 500px;
+    width: 100%;
+    margin: auto;
+}
+
+.container {
+    background-color: #ffffff;
+    padding: 30px 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    animation: zoomIn 0.8s ease-out; /* Zoom-in animation for the login card */
+}
+
+/* Header Styles */
+h1 {
+    color: #a0006d; /* Deep pink */
+    font-size: 30px;
+    margin-bottom: 25px;
+    font-family: 'Brush Script MT', cursive;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    color: #880061; /* Purple-pink */
+    font-size: 24px;
+    margin-bottom: 20px;
+    font-weight: bold;
+    animation: fadeInText 1s ease-in-out; /* Fade-in animation for headers */
+}
+
+/* Form Styles */
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+input[type="text"],
+input[type="password"] {
+    padding: 14px;
+    margin: 12px 0;
+    border: 1px solid #a0006d;
+    border-radius: 10px;
+    font-size: 16px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: border-color 0.3s, box-shadow 0.3s;
+    animation: fadeInInputs 1.2s ease-in-out; /* Fade-in animation for input fields */
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+    border-color: #5a007f;
+    outline: none;
+    box-shadow: 0 0 8px #5a007f;
+    animation: glowFocus 0.4s ease-in-out infinite alternate; /* Subtle glowing effect */
+}
+
+button {
+    padding: 14px;
+    border: none;
+    border-radius: 10px;
+    background-color: #a0006d;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: background-color 0.3s, transform 0.2s;
+    animation: fadeInButton 1.5s ease-in-out; /* Fade-in animation for the button */
+}
+
+button:hover {
+    background-color: #5a007f;
+    transform: scale(1.05);
+}
+
+button:active {
+    animation: pulseClick 0.2s ease-in-out; /* Pulse effect on click */
+}
+
+/* Message Styles */
+#loginMessage {
+    color: #ff4d4d; /* Bright red */
+    font-size: 14px;
+    margin-top: 12px;
+}
+
+/* Back Button */
+.return-button {
+    margin-top: 25px;
+    padding: 14px 20px;
+    background-color: #880061;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.return-button:hover {
+    background-color: #5a007f;
+    transform: scale(1.05);
+}
+
+/* Keyframes for Animations */
+@keyframes fadeInBody {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideInFromTop {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes zoomIn {
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInText {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInInputs {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInButton {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes glowFocus {
+    from {
+        box-shadow: 0 0 8px rgba(90, 0, 127, 0.6);
+    }
+    to {
+        box-shadow: 0 0 12px rgba(90, 0, 127, 1);
+    }
+}
+
+@keyframes pulseClick {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}

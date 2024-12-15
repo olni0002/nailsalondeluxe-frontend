@@ -1,0 +1,135 @@
+body {
+    margin: 0; /* Remove default body margin */
+    font-family: Arial, sans-serif; /* Set default font */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ensure the page height covers the viewport */
+}
+
+.content-container {
+    flex: 1; /* Push footer to the bottom by taking up remaining space */
+    padding: 20px; /* Padding for the main content */
+}
+
+.footer-container {
+    display: flex; /* Use flexbox for layout */
+    justify-content: space-between; /* Distribute space evenly */
+    align-items: center; /* Align items vertically */
+    background-color: #f779b2; /* Bright violet background */
+    color: white; /* White text color */
+    padding: 15px 20px; /* Padding inside the footer */
+    box-sizing: border-box; /* Include padding in width calculations */
+    position: relative; /* Ensure it’s part of the document flow */
+    bottom: 0; /* Stick to the bottom of the viewport */
+    width: 100%; /* Full width of the page */
+    font-size: 16px; /* Slightly larger font size for general text */
+    flex-wrap: nowrap; /* Prevent wrapping on wide screens */
+}
+
+.footer-container .content {
+    max-width: 30%; /* Take up 30% of the footer width */
+    padding-right: 15px; /* Add spacing between text and logo */
+    text-align: left; /* Align text to the left */
+}
+
+.footer-container h1 {
+    font-size: 26px; /* Larger title font size */
+    margin-bottom: 10px; /* Space below the title */
+    color: #a0006d; /* Deep pink */
+    font-family: 'Brush Script MT', cursive;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.footer-container ul {
+    list-style: none; /* Remove bullet points */
+    padding: 0; /* Remove padding */
+    margin: 0; /* Remove margin */
+}
+
+.footer-container li {
+    margin: 6px 0; /* Slightly increased spacing between list items */
+    font-size: 16px; /* Increase font size for list items */
+}
+
+.footer-container a {
+    color: white; /* Keep links white */
+    text-decoration: none; /* Remove underline */
+    font-size: 16px; /* Match link size to list items */
+}
+
+.footer-container a:hover {
+    text-decoration: underline; /* Add underline on hover */
+}
+
+.footer-container .logo-container {
+    flex-grow: 1; /* Allow the logo to take up available space */
+    display: flex; /* Use flexbox for centering */
+    justify-content: center; /* Center the logo horizontally */
+    align-items: center; /* Center the logo vertically */
+}
+
+.footer-container .logo-container img {
+    max-width: 300px; /* Limit the logo size */
+    height: auto; /* Maintain aspect ratio */
+}
+
+.footer-container .image-container {
+    position: relative; /* Position context for the address */
+    max-width: 400px; /* Set a fixed max width for the map container */
+    width: 100%; /* Make it responsive */
+}
+
+.footer-container .image-container img {
+    width: 100%; /* Responsive image that fits the container */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 10px; /* Add rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
+}
+
+.footer-container .image-container .address {
+    position: absolute; /* Keep the address positioned over the image */
+    bottom: 10px; /* Stay at the bottom of the image */
+    left: 10px; /* Stay slightly from the left */
+    background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent black background */
+    color: white; /* White text for readability */
+    padding: 6px 10px; /* Reduced padding for the text */
+    border-radius: 5px; /* Rounded corners for the address box */
+    font-size: 12px; /* Slightly smaller font size for the address text */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* Add a subtle shadow */
+    max-width: calc(100% - 20px); /* Prevent the box from overlapping edges */
+    text-align: left; /* Align text to the left */
+    white-space: nowrap; /* Prevent text wrapping */
+    overflow: hidden; /* Hide overflow text */
+    text-overflow: ellipsis; /* Add ellipsis for overflowing text */
+}
+
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column; /* Stack content vertically */
+        align-items: center; /* Center items for a balanced look */
+        text-align: center; /* Center text content */
+    }
+
+    .footer-container .content,
+    .footer-container .logo-container,
+    .footer-container .image-container {
+        max-width: 100%; /* Ensure full width for each block */
+        margin-bottom: 15px; /* Add spacing between sections */
+    }
+
+    .footer-container .image-container {
+        position: relative; /* Ensure address stays within the image */
+        max-width: 250px; /* Reduce the map size on smaller screens */
+    }
+
+    .footer-container .logo-container img {
+        max-width: 200px; /* Reduce the logo size on smaller screens */
+    }
+
+    .footer-container .image-container .address {
+        bottom: 10px; /* Stay at the bottom of the image */
+        left: 10px; /* Maintain consistent padding from the edge */
+        max-width: calc(100% - 20px); /* Ensure it fits within the image */
+    }
+}

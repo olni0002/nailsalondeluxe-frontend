@@ -1,0 +1,154 @@
+/* Reset Styling */
+body, ul, li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Navbar */
+.navbar {
+    background: linear-gradient(to right, #2c003e, #5a007f);
+    width: 100%;
+    height: 91px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px; /* Adjust overall padding */
+    z-index: 1000;
+    position: fixed; /* Navbar stays fixed at the top */
+    top: 0;
+    left: 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Slight shadow for depth */
+}
+
+/* Logo Section */
+.navbar-extras {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-logo {
+    height: 91px; /* Adjust logo size */
+    width: auto;
+}
+
+/* Hamburger Menu */
+.hamburger-menu {
+    display: none; /* Hidden by default */
+    flex-direction: column;
+    justify-content: space-around;
+    height: 25px;
+    cursor: pointer;
+    padding: 0 20px;
+    z-index: 1001;
+}
+
+.hamburger-menu span {
+    display: block;
+    width: 30px;
+    height: 3px;
+    background-color: white;
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Navbar List for Larger Screens */
+.navbar-list {
+    display: flex; /* Inline links for larger screens */
+    flex-direction: row;
+    justify-content: flex-start; /* Align items more to the left */
+    align-items: center;
+    gap: 20px; /* Add spacing between links */
+    margin-right: 20px; /* Space from the right edge */
+    transition: transform 0.4s ease-in-out;
+}
+
+/* Navbar List for Smaller Screens (Burger Menu Active) */
+.navbar-list.active {
+    display: flex; /* Show the links when burger menu is clicked */
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 300px;
+    background-color: #2c003e;
+    justify-content: center; /* Center items vertically */
+    align-items: center; /* Center items horizontally */
+    box-shadow: -5px 0 10px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    gap: 20px; /* Spacing between items */
+}
+
+/* Navbar List Items */
+.navbar-list li {
+    list-style: none;
+}
+
+.navbar-list a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 10px 15px;
+    border-radius: 5px; /* Slight rounding for hover effects */
+    transition: background 0.3s ease-in-out;
+}
+
+/* Hover and Active Link Styling */
+.navbar-list a:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.navbar-list a.active {
+    background: #ff8c00;
+    color: white;
+    font-weight: bold;
+}
+
+/* Login Link Styling */
+.navbar-list .login-link a {
+    background-color: #ff8c00;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: bold;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.navbar-list .login-link a:hover {
+    background-color: #ffa733;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .navbar-list {
+        display: none; /* Navbar links are hidden by default on small screens */
+    }
+
+    .navbar-list.active {
+        display: flex; /* Show links when burger menu is active */
+    }
+
+    .hamburger-menu {
+        display: flex; /* Burger menu is visible only on smaller screens */
+    }
+}
+
+@media (min-width: 769px) {
+    .hamburger-menu {
+        display: none; /* Hide burger menu on larger screens */
+    }
+
+    .navbar-list {
+        display: flex; /* Show navbar links inline */
+        flex-direction: row;
+        gap: 20px;
+    }
+}

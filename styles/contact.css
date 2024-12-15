@@ -1,0 +1,110 @@
+/* General page styling */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #f9f9f9; /* Light background color */
+    display: flex;
+    justify-content: center; /* Center the entire content horizontally */
+    align-items: center; /* Center the entire content vertically */
+    min-height: 100vh; /* Ensure the content takes full viewport height */
+}
+
+/* Container for the page content */
+.page-container {
+    display: flex;
+    justify-content: space-between; /* Separate text and form containers */
+    align-items: flex-start; /* Align items at the top */
+    gap: 20px;
+    width: 80%; /* Control the width of the entire block */
+    max-width: 900px; /* Prevent the block from growing too large */
+}
+
+/* Styling for the text container */
+.text-container {
+    flex: 0 0 400px; /* Fixed width of 400px */
+    max-width: 400px; /* Ensure it doesn't grow beyond 400px */
+    color: #333; /* Dark text color */
+    text-align: left; /* Ensure text remains left-aligned */
+}
+
+/* Title in the text container */
+.text-container h2 {
+    font-size: 24px;
+    color: #a0006d; /* Deep pink */
+    margin-bottom: 15px;
+    font-family: 'Brush Script MT', cursive; /* Stylish font */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Styling for the form container */
+.form-container {
+    flex: 0 0 400px; /* Fixed width of 400px */
+    max-width: 400px; /* Ensure it doesn't grow beyond 400px */
+    background-color: #ffffff; /* White background for the form */
+    padding: 20px;
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+/* Styling for the form */
+#contactForm {
+    display: flex;
+    flex-direction: column; /* Stack form fields vertically */
+}
+
+#contactForm label {
+    font-weight: bold;
+    margin-bottom: 8px; /* Spacing between label and input */
+    color: #444; /* Darker gray for labels */
+    width: 100%; /* Labels stretch across full width */
+    text-align: left; /* Keep labels left-aligned */
+}
+
+#contactForm input,
+#contactForm textarea {
+    padding: 10px;
+    border: 1px solid #ccc; /* Light gray border */
+    border-radius: 4px; /* Rounded input corners */
+    margin-bottom: 15px; /* Spacing between inputs */
+    font-size: 14px;
+    width: 100%; /* Full width of the form container */
+    box-sizing: border-box; /* Include padding in width */
+    text-align: left; /* Align input text to the left */
+}
+
+#contactForm textarea {
+    min-height: 80px; /* Smaller height for the textarea */
+    resize: vertical; /* Allow vertical resizing only */
+}
+
+#contactForm button {
+    padding: 10px 20px;
+    background-color: #f779b2; /* Bright violet background */
+    color: white;
+    border: none;
+    border-radius: 4px; /* Rounded corners for the button */
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    align-self: flex-start; /* Align the button to the left */
+}
+
+#contactForm button:hover {
+    background-color: #c55a8d; /* Darker shade for hover effect */
+}
+
+/* Media Query for Small Screens */
+@media (max-width: 800px) {
+    .page-container {
+        flex-direction: column; /* Stack elements vertically */
+        align-items: center; /* Center align items */
+    }
+
+    .text-container,
+    .form-container {
+        flex: 0 0 100%; /* Full width on smaller screens */
+        max-width: 100%; /* Override max-width to fit screen */
+    }
+}
