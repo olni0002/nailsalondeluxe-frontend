@@ -17,6 +17,8 @@ document.getElementById("loginForm").addEventListener("submit", async (e) => {
 
         if (response.ok) {
             const user = await response.json();
+            document.cookie = `username=${user.name}; max-age=34560000; path=/`;
+            document.cookie = `password=${user.password}; max-age=34560000; path=/`;
             messageElement.textContent = `Welcome, ${user.name}!`;
             messageElement.style.color = "green";
         } else {

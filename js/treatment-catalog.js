@@ -76,8 +76,7 @@ function loadImage(image) {
 }
 
 async function loadPage() {
-    if (true)
-        loggedIn = true;
+    loggedIn = await validateUser();
 
     const categories = await getJson("");
     for (const category of categories) {
@@ -85,5 +84,43 @@ async function loadPage() {
     }
 }
 
-let loggedIn = false;
+let loggedIn;
 loadPage();
+
+async function validateUser() {
+    const nameFromCookie = getCookie("username");
+    const passwordFromCookie = getCookie("password");
+
+    const response = await fetch("http://localhost:8080/api/treater/login", {
+        method: "POST",
+        body: JSON.stringify({
+            name: nameFromCookie,
+            password: passwordFromCookie
+        }),
+        headers: {
+            "Content-Type": "application/json"
+        }
+    });
+
+    if (response.ok)
+        return true;
+    else
+        return false;
+
+}
+
+function getCookie(cname) {
+    let name = cname + "=";
+    let decodedCookie = decodeURIComponent(document.cookie);
+    let ca = decodedCookie.split(';');
+    for(let i = 0; i <ca.length; i++) {
+      let c = ca[i];
+      while (c.charAt(0) == ' ') {
+        c = c.substring(1);
+      }
+      if (c.indexOf(name) == 0) {
+        return c.substring(name.length, c.length);
+      }
+    }
+    return "";
+}
