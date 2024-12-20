@@ -51,6 +51,17 @@ async function loadCategory(category) {
         }
     }
 
+    if (loggedIn) {
+        const delBtn = document.createElement("button");
+        delBtn.textContent = "Delete category";
+        delBtn.onclick = () => {
+            fetch(`http://localhost:8080/api/category/${category.id}`, {
+                method: "DELETE"
+            }).then(() => location.reload());
+        }
+        div.append(delBtn);
+    }
+
     container.append(div);
 }
 
