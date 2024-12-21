@@ -10,20 +10,67 @@ async function loadCategory(category) {
     div.style.border = "solid green";
     div.style.textAlign = "center";
 
-    const name = document.createElement("p");
-    name.textContent = category.name;
+    const name = document.createElement("input");
+    div.append(name);
+    if (loggedIn) {
+        name.readOnly = false;
+
+        const saveName = document.createElement("button");
+        saveName.textContent = "Save";
+        saveName.onclick = () => {
+            fetch(`http://localhost:8080/api/category/${category.id}`, {
+                method: "PUT",
+                body: JSON.stringify({
+                    name: name.value
+                }),
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            }).then(() => location.reload());
+        }
+        div.append(saveName);
+
+    } else
+        name.readOnly = true;
+    
+    name.value = category.name;
     name.style.display = "block";
     name.style.marginLeft = "auto";
     name.style.marginRight = "auto";
-    div.append(name);
 
     const id = category.id;
     const treatments = await getJson(`/${id}/treatments`);
     treatments.forEach(t => {
-        const value = loadTreatment(t);
-        div.append(value);
+        const tName = document.createElement("input");
+        tName.readOnly = true;
+        tName.value = t.name;
+        const tPrice = document.createElement("input");
+        tPrice.readOnly = true;
+        tPrice.value = t.price;
+        
+        div.append(tName, tPrice);
 
         if (loggedIn) {
+            tName.readOnly = false;
+            tPrice.readOnly = false;
+            const saveTreatment = document.createElement("button");
+            saveTreatment.textContent = "Edit";
+            saveTreatment.onclick = () => {
+                fetch(`http://localhost:8080/api/treatment/${t.id}`, {
+                    method: "PUT",
+                    body: JSON.stringify({
+                        name: tName.value,
+                        price: tPrice.value,
+                        category: {
+                            id: 1
+                        }
+                    }),
+                    headers: {
+                        "Content-Type": "application/json"
+                    }
+                }).then(() => location.reload());
+            }
+
             const delBtn = document.createElement("button");
             delBtn.textContent = "Delete";
             delBtn.onclick = () => {
@@ -31,9 +78,36 @@ async function loadCategory(category) {
                     method: "DELETE"
                 }).then(() => location.reload());
             }
-            div.append(delBtn);
+            div.append(saveTreatment, delBtn);
         }
     });
+
+    if (loggedIn) {
+        const inputTName = document.createElement("input");
+        inputTName.type = "text";
+        const inputTPrice = document.createElement("input");
+        inputTPrice.type = "text";
+
+        const saveBtn = document.createElement("button");
+        saveBtn.textContent = "save";
+        saveBtn.onclick = () => {
+            fetch("http://localhost:8080/api/treatment", {
+                method: "POST",
+                body: JSON.stringify({
+                    name: inputTName.value,
+                    price: inputTPrice.value,
+                    category: {
+                        id: category.id
+                    }
+                }),
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            }).then(() => location.reload());
+        }
+
+        div.append(inputTName, inputTPrice, saveBtn);
+    }
 
     const image = await getJson(`/${id}/image`);
     if (image !== null) {
@@ -52,6 +126,34 @@ async function loadCategory(category) {
     }
 
     if (loggedIn) {
+        const uploadImage = document.createElement("input");
+        uploadImage.type = "file";
+        uploadImage.accept = "image/*";
+
+        const saveImage = document.createElement("button");
+        saveImage.textContent = "Save image";
+        saveImage.onclick = async () => {
+            const file = await uploadImage.files[0].bytes();
+            fetch (`http://localhost:8080/api/categoryImage/${image.id}`, {
+                method: "PUT",
+                body: JSON.stringify({
+                    fileName: image.fileName,
+                    mimeType: image.mimeType,
+                    lastModified: image.lastModified,
+                    imageData: file.toBase64(),
+                    category: {
+                        id: category.id
+                    }
+                }),
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            }).then(() => location.reload());
+        }
+        div.append(uploadImage, saveImage);
+    }
+
+    if (loggedIn) {
         const delBtn = document.createElement("button");
         delBtn.textContent = "Delete category";
         delBtn.onclick = () => {
@@ -63,13 +165,6 @@ async function loadCategory(category) {
     }
 
     container.append(div);
-}
-
-function loadTreatment(treatment) {
-    const name = document.createElement("p");
-    name.textContent = `${treatment.name}...............${treatment.price},-`;
-
-    return name;
 }
 
 function loadImage(image) {
@@ -92,6 +187,28 @@ async function loadPage() {
     const categories = await getJson("");
     for (const category of categories) {
         await loadCategory(category);
+    }
+
+    if (loggedIn) {
+        const loginRef = document.querySelector(".login-link").firstElementChild;
+        loginRef.textContent = "Logout";
+        loginRef.href = `logout.html?ref=${location.pathname}`;
+
+        const addCat = document.createElement("button");
+        addCat.textContent = "Add category";
+        addCat.onclick = () => {
+            fetch("http://localhost:8080/api/category", {
+                method: "POST",
+                body: JSON.stringify({
+                    name: null,
+                    description: null
+                }),
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            }).then(() => location.reload());
+        }
+        document.querySelector(".content-container").append(addCat);
     }
 }
 
