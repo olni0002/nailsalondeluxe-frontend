@@ -33,5 +33,42 @@ function validateEmail(email) {
     return emailRegex.test(email);
 }
 
+async function validateUser() {
+    const nameFromCookie = getCookie("username");
+    const passwordFromCookie = getCookie("password");
 
+    const response = await fetch("http://localhost:8080/api/treater/login", {
+        method: "POST",
+        body: JSON.stringify({
+            name: nameFromCookie,
+            password: passwordFromCookie
+        }),
+        headers: {
+            "Content-Type": "application/json"
+        }
+    });
 
+    if (response.ok) {
+        const loginRef = document.querySelector(".login-link").firstElementChild;
+        loginRef.textContent = "Logout";
+        loginRef.href = `logout.html?ref=${location.pathname}`;
+    }
+}
+
+function getCookie(cname) {
+    let name = cname + "=";
+    let decodedCookie = decodeURIComponent(document.cookie);
+    let ca = decodedCookie.split(';');
+    for(let i = 0; i <ca.length; i++) {
+      let c = ca[i];
+      while (c.charAt(0) == ' ') {
+        c = c.substring(1);
+      }
+      if (c.indexOf(name) == 0) {
+        return c.substring(name.length, c.length);
+      }
+    }
+    return "";
+}
+
+validateUser();
