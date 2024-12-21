@@ -1,0 +1,38 @@
+/* Style for the container */
+.container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Three columns */
+    gap: 20px; /* Space between the images */
+    padding: 20px;
+    width: fit-content; /* Container width matches content */
+    background-color: #ffffff; /* Optional: White background */
+    border-radius: 10px; /* Rounded corners for the container */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+/* Style for individual divs containing the images */
+.container div {
+    display: flex; /* Use Flexbox */
+    justify-content: center; /* Center the image horizontally */
+    align-items: center; /* Center the image vertically */
+    width: 100%; /* Full width of grid cell */
+    height: 200px; /* Fixed height for uniform appearance */
+    background-color: #f9f9f9; /* Optional: Light background for the div */
+    border-radius: 8px; /* Match the image's border-radius */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional: Shadow for the div */
+}
+
+/* Style for individual images */
+.container div img {
+    width: 200px; /* Fixed width for all images */
+    height: 200px; /* Fixed height for all images */
+    object-fit: cover; /* Ensures images maintain aspect ratio and fill the space */
+    border-radius: 8px; /* Rounded corners for images */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+/* Hide all non-image elements */
+.container div p,
+.container div button {
+    display: none; /* Ensure only images are visible */
+}

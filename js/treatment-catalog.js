@@ -7,7 +7,7 @@ async function loadCategory(category) {
 
     const div = document.createElement("div");
     div.style.width = "360px";
-    div.style.border = "solid green";
+    div.style.border = "white";
     div.style.textAlign = "center";
 
     const name = document.createElement("p");

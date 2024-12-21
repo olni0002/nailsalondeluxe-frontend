@@ -1,7 +1,33 @@
 .container {
     display: grid;
-    grid-template-columns: repeat(2, auto);
-    gap: 10px;
-    width: 50%;
-    margin: 0 auto;
+    grid-template-columns: repeat(2, 1fr); /* Always two items per row */
+    gap: 20px; /* Space between grid items */
+    padding: 20px; /* Padding around the grid */
+    max-width: 800px; /* Limit the maximum width */
+    margin: 0 auto; /* Center the container horizontally */
+    background-color: #ffffff; /* White background */
+    border-radius: 15px; /* Rounded corners */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    text-align: center; /* Center-align all text inside */
+    color: #2c003e; /* Deep violet text for contrast */
 }
+
+/* Add styling for individual grid items */
+.container div {
+    background-color: #f779b2; /* Bright pink background for grid items */
+    border: 1px solid #e05e96; /* Slightly darker pink for borders */
+    border-radius: 10px; /* Rounded corners */
+    padding: 15px; /* Inner padding */
+    color: #ffffff; /* White text for readability */
+    text-align: center; /* Center-align text */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effects */
+}
+
+/* Hover effect for grid items */
+.container div:hover {
+    transform: translateY(-5px); /* Slight lift on hover */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15); /* Stronger shadow on hover */
+    background-color: #e05e96; /* Darker pink for hover effect */
+}
+

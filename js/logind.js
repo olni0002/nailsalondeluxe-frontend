@@ -21,6 +21,8 @@ document.getElementById("loginForm").addEventListener("submit", async (e) => {
             document.cookie = `password=${user.password}; max-age=34560000; path=/`;
             messageElement.textContent = `Welcome, ${user.name}!`;
             messageElement.style.color = "green";
+            // Redirect to another page
+            window.location.href = "treatment-catalog.html"; // Replace with your desired URL
         } else {
             messageElement.textContent = "Wrong name or password.";
             messageElement.style.color = "red";

@@ -152,3 +152,33 @@ body {
         gap: 20px;
     }
 }
+.social-links {
+    list-style: none; /* Remove bullet points */
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 20px; /* Space between links */
+    justify-content: center; /* Center the links */
+}
+
+.social-links li {
+    display: flex;
+    align-items: center; /* Center-align icon and text */
+}
+
+.social-links a {
+    text-decoration: none;
+    color: #5a007f; /* Theme color */
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Space between icon and text */
+}
+
+.social-links a:hover {
+    color: #2c003e; /* Darker violet on hover */
+}
+
+.social-links i {
+    font-size: 24px; /* Adjust icon size */
+}
