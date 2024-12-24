@@ -1,19 +1,19 @@
+/* General container styling */
 .container {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* Always two items per row */
-    gap: 20px; /* Space between grid items */
+    grid-template-columns: repeat(2, 1fr); /* Always 2 cards per row */
+    gap: 20px; /* Space between cards */
     padding: 20px; /* Padding around the grid */
-    max-width: 800px; /* Limit the maximum width */
+    max-width: 1000px; /* Limit the maximum width */
     margin: 0 auto; /* Center the container horizontally */
     background-color: #ffffff; /* White background */
     border-radius: 15px; /* Rounded corners */
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-    text-align: center; /* Center-align all text inside */
     color: #2c003e; /* Deep violet text for contrast */
 }
 
-/* Add styling for individual grid items */
-.container div {
+/* Styling for individual cards */
+.container .card {
     background-color: #f779b2; /* Bright pink background for grid items */
     border: 1px solid #e05e96; /* Slightly darker pink for borders */
     border-radius: 10px; /* Rounded corners */
@@ -22,12 +22,96 @@
     text-align: center; /* Center-align text */
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
     transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effects */
+    min-height: 200px; /* Uniform height for all cards */
 }
 
-/* Hover effect for grid items */
-.container div:hover {
+/* Hover effect for cards */
+.container .card:hover {
     transform: translateY(-5px); /* Slight lift on hover */
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15); /* Stronger shadow on hover */
     background-color: #e05e96; /* Darker pink for hover effect */
 }
 
+/* Styling for logged-in users */
+.container.logged-in .card {
+    background-color: #ffe6f2; /* Lighter pink for edit mode */
+    color: #2c003e; /* Deep violet text for contrast */
+}
+
+/* Styling for editable elements in logged-in mode */
+.card.edit-mode input {
+    margin: 10px 0;
+    padding: 8px;
+    width: calc(100% - 20px);
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.card.edit-mode button {
+    padding: 10px 15px;
+    margin-top: 5px;
+    border: none;
+    border-radius: 5px;
+    background-color: #e05e96;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.card.edit-mode button:hover {
+    background-color: #c04a78;
+}
+
+/* Styling for images */
+.card img {
+    max-width: 100%;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+/* Booking button styling */
+.booking-button {
+    display: block;
+    width: 150px;
+    margin: 20px auto;
+    padding: 10px 15px;
+    background-color: #2c003e;
+    color: #fff;
+    text-align: center;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.booking-button:hover {
+    background-color: #4b0075;
+}
+
+/* Add Category Container Styling */
+.add-category-container {
+    margin-top: 30px; /* Space above the container */
+    text-align: center; /* Center-align content */
+    padding: 20px; /* Padding around the content */
+    background-color: #f5f5f5; /* Light gray background for contrast */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+/* Add Category Button Styling */
+.add-category-container button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #2c003e;
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.add-category-container button:hover {
+    background-color: #4b0075; /* Darker violet on hover */
+    transform: scale(1.05); /* Slightly enlarge on hover */
+}

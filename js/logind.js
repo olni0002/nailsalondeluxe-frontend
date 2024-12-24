@@ -22,11 +22,8 @@ document.getElementById("loginForm").addEventListener("submit", async (e) => {
             messageElement.textContent = `Welcome, ${user.name}!`;
             messageElement.style.color = "green";
 
-            const paramSearch = new URLSearchParams(location.search);
-            if (paramSearch.has("ref"))
-                location.href = paramSearch.get("ref");
-            else
-                location.href = "/index.html";
+
+                location.href = "/nailsalondeluxe-frontend/index.html";
         } else {
             messageElement.textContent = "Wrong name or password.";
             messageElement.style.color = "red";
